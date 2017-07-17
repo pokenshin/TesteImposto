@@ -1,0 +1,8 @@
+Teste 1 - Lista de atividades para gerar XML
+- Adicionado [Serializable] na classe NotaFiscal.
+- Adicionado [Serializable] na classe NotaFiscalItem.
+- Tipo da propriedade ItensDaNotaFiscal mudado de IEnumerable<NotaFiscalItem> para List<NotaFiscalItem> para simplificar e facilitar a serialização.
+- Criado método criarXML para geração de XML no serviço NotaFiscalService.
+
+
+

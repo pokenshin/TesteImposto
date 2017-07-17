@@ -1,0 +1,32 @@
+<NotaFiscal xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<id></id>
+	<NumeroNotaFiscal></NumeroNotaFiscal>
+	<Serie></Serie>
+	<NomeCliente></NomeCliente>
+	<EstadoDestino></EstadoDestino>
+	<EstadoOrigem></EstadoOrigem>
+	<ItensDaNotaFiscal>
+		<NotaFiscalItem>
+			<Id></Id>
+			<IdNotaFiscal></IdNotaFiscal>
+			<Cfop></Cfop>
+			<TipoIcms></TipoIcms>
+			<BaseIcms></BaseIcms>
+			<AliquotaIcms></AliquotaIcms>
+			<ValorIcms></ValorIcms>
+			<NomeProduto></NomeProduto>
+			<CodigoProduto></CodigoProduto>
+		</NotaFiscalItem>
+		<NotaFiscalItem>
+			<Id></Id>
+			<IdNotaFiscal></IdNotaFiscal>
+			<Cfop></Cfop>
+			<TipoIcms></TipoIcms>
+			<BaseIcms></BaseIcms>
+			<AliquotaIcms></AliquotaIcms>
+			<ValorIcms></ValorIcms>
+			<NomeProduto></NomeProduto>
+			<CodigoProduto></CodigoProduto>
+		</NotaFiscalItem>
+	</ItensDaNotaFiscal>
+</NotaFiscal>
