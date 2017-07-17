@@ -150,7 +150,14 @@ namespace Imposto.Core.Domain
                     notaFiscalItem.TipoIcms = "60";
                     notaFiscalItem.AliquotaIcms = 0.18;
                     notaFiscalItem.ValorIcms = notaFiscalItem.BaseIcms * notaFiscalItem.AliquotaIcms;
+                    notaFiscalItem.AliquotaIpi = 0.0;
                 }
+                else
+                    notaFiscalItem.AliquotaIpi = 0.1;
+
+                notaFiscalItem.BaseIpi = itemPedido.ValorItemPedido;
+                notaFiscalItem.ValorIpi = notaFiscalItem.BaseIpi * notaFiscalItem.AliquotaIpi;
+
                 notaFiscalItem.NomeProduto = itemPedido.NomeProduto;
                 notaFiscalItem.CodigoProduto = itemPedido.CodigoProduto;
                 ItensDaNotaFiscal.Add(notaFiscalItem);

@@ -51,7 +51,10 @@ namespace Imposto.Core.Data
                         cmd.Parameters.Add("@pValorIcms", SqlDbType.Decimal).Value = item.ValorIcms;
                         cmd.Parameters.Add("@pNomeProduto", SqlDbType.VarChar).Value = item.NomeProduto;
                         cmd.Parameters.Add("@pCodigoProduto", SqlDbType.VarChar).Value = item.CodigoProduto;
-
+                        cmd.Parameters.Add("@pBaseIpi", SqlDbType.Decimal).Value = item.BaseIpi;
+                        cmd.Parameters.Add("@pAliquotaIpi", SqlDbType.Decimal).Value = item.AliquotaIpi;
+                        cmd.Parameters.Add("@pValorIpi", SqlDbType.Decimal).Value = item.ValorIpi;
+                        
                         cmd.ExecuteNonQuery();
                     }
                 }

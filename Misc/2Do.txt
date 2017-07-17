@@ -1,6 +1,6 @@
-- BUG Não documentado: quando um item é adicionado ao pedido sem clicar no checkbox "Brinde", o DataColumn resultante deste DataRow ficava vazio, o que causava um erro na hora de converte-lo para boolean e adicioná-lo na propriedade "ItensDoPedido" do objeto "pedido". O erro foi corrigido com uma verificação que atribui o valor de "false" caso a DataColumn "Brinde" estiver nulo no DataRow.
+- BUG Não documentado 1: quando um item é adicionado ao pedido sem clicar no checkbox "Brinde", o DataColumn resultante deste DataRow ficava vazio, o que causava um erro na hora de converte-lo para boolean e adicioná-lo na propriedade "ItensDoPedido" do objeto "pedido". O erro foi corrigido com uma verificação que atribui o valor de "false" caso a DataColumn "Brinde" estiver nulo no DataRow.
 
-- BUG Não documentado: os itens do pedido não estão sendo adicionados na nota fiscal. Corrigido ao chamar o método "ItensDaNotaFiscal.Add(notaFiscalItem)" durante o loop "foreach (PedidoItem itemPedido in pedido.ItensDoPedido)" dentro do método EmitirNotaFiscal da classe NotaFiscal. (Linha 156).
+- BUG Não documentado 2: os itens do pedido não estão sendo adicionados na nota fiscal. Corrigido ao chamar o método "ItensDaNotaFiscal.Add(notaFiscalItem)" durante o loop "foreach (PedidoItem itemPedido in pedido.ItensDoPedido)" dentro do método EmitirNotaFiscal da classe NotaFiscal. (Linha 156).
 
 Teste 1 - Gerar XML
 - Adicionado [Serializable] na classe NotaFiscal.
@@ -9,11 +9,27 @@ Teste 1 - Gerar XML
 - Criado método criarXML para geração de XML no serviço NotaFiscalService.
 
 Teste 2 - Criação BD
-- Criado banco de dados Teste
-- Criado usuário adm_teste (senha "teste") e setado como owner do banco de dados Teste
+- Criado banco de dados Teste e populados utilizando stored procedures fornecidas.
+- Importadas Stored Procedure "P_NOTA_FISCAL" e "P_NOTA_FISCAL_ITEM"
 - Criada propriedade connectionString dentro do NotaFiscalRepository
 - Criado método SalvarNotaFiscal em NotaFiscalRepository
 - Criado método AtualizaNotaFiscal em NotaFiscalRepository
+
+Teste 3 - Campos para calculo do IPI
+- Criados campos BaseIpi, AliquotaIpi e ValorIpi na classe NotaFiscalItem.
+- Adicionado cálculo da Aliquota do Ipi em caso de Brinde no método EmitirNotaFiscal da classe NotaFiscal.
+- Adicionado cálculo da Base do IPI do produto euqlizando-a ao valor do Item  no método EmitirNotaFiscal da classe NotaFiscal.
+- Adicionado cálculo do Valor do IPI do produto multiplicando a Base do IPI à Aliquota do IPI no método EmitirNotaFiscal da classe NotaFiscal.
+- Alteração da tabela NotaFiscalItem (scriptados no arquivo CRIAR_NOVOS_CAMPOS_NOTAFISCALITEM.sql)
+	- Novo campo: BaseIpi decimal(18,5)
+	- Novo campo: AliquotaIpi decimal(18,5)
+	- Novo campo: ValorIpi decimal (18,5)
+- Alteração da Stored Procedure P_NOTA_FISCAL_ITEM para adicionar os novos campos criados na tabela. Script para reproduzir alterações está no arquivo ALTER_P_NOTA_FISCAL_ITEM.
+- Alteração no método SalvarNotaFiscal da classe NotaFiscalRepository para refletir as alterações da Stored Procedure P_NOTA_FISCAL_ITEM
+
+
+Teste 5 - Bug no CFOP
+- Corrigido bug que impedia a geração do CFOP para os itens inseridos no pedido. O bug era causado pela inversão dos campos EstadoOrigem e EstadoDestino no método EmitirNotaFiscal da classe NotaFiscal.
 
 Melhorias a serem feitas:
 - Diminuição dos campos Estado Origem/Estado Destino
@@ -21,3 +37,4 @@ Melhorias a serem feitas:
 - Inclusão de instrução para inserir somente a sigla em "Estado Origem/Estado Destino"
 - Diminuição do campo "Brinde" do DataGrid para evitar barras de rolagem.
 - Restrição de tamanho de campos para evitar erros ao salvar no banco de dados.
+- Formatar numeros no datagrid
