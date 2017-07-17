@@ -24,7 +24,7 @@ namespace Imposto.Core.Service
             NotaFiscal notaFiscal = new NotaFiscal();
             notaFiscal.EmitirNotaFiscal(pedido);
             criarXML(notaFiscal);
-            //insereBD(notaFiscal);
+            insereBD(notaFiscal);
         }
 
         //Gera XML com os dados da nota fiscal
@@ -61,7 +61,7 @@ namespace Imposto.Core.Service
         // Insere a nota fiscal no banco de dados
         private void insereBD(NotaFiscal notaFiscal)
         {
-            //Somente insere no banco de dados caso o arquivo XML já exista.
+            //Somente insere no banco de dados caso o arquivo XML tenha sido criado com sucesso.
             if (!File.Exists(caminho + arquivo))
                 return;
             else
