@@ -1,8 +1,23 @@
-Teste 1 - Lista de atividades para gerar XML
+- BUG Não documentado: quando um item é adicionado ao pedido sem clicar no checkbox "Brinde", o DataColumn resultante deste DataRow ficava vazio, o que causava um erro na hora de converte-lo para boolean e adicioná-lo na propriedade "ItensDoPedido" do objeto "pedido". O erro foi corrigido com uma verificação que atribui o valor de "false" caso a DataColumn "Brinde" estiver nulo no DataRow.
+
+- BUG Não documentado: os itens do pedido não estão sendo adicionados na nota fiscal. Corrigido ao chamar o método "ItensDaNotaFiscal.Add(notaFiscalItem)" durante o loop "foreach (PedidoItem itemPedido in pedido.ItensDoPedido)" dentro do método EmitirNotaFiscal da classe NotaFiscal. (Linha 156).
+
+Teste 1 - Gerar XML
 - Adicionado [Serializable] na classe NotaFiscal.
 - Adicionado [Serializable] na classe NotaFiscalItem.
-- Tipo da propriedade ItensDaNotaFiscal mudado de IEnumerable<NotaFiscalItem> para List<NotaFiscalItem> para simplificar e facilitar a serialização.
+- Tipo da propriedade ItensDaNotaFiscal mudado de IEnumerable<NotaFiscalItem> para List<NotaFiscalItem> para simplificar a serialização.
 - Criado método criarXML para geração de XML no serviço NotaFiscalService.
 
+Teste 2 - Criação BD
+- Criado banco de dados Teste
+- Criado usuário adm_teste (senha "teste") e setado como owner do banco de dados Teste
+- Criada propriedade connectionString dentro do NotaFiscalRepository
+- Criado método SalvarNotaFiscal em NotaFiscalRepository
+- Criado método AtualizaNotaFiscal em NotaFiscalRepository
 
-
+Melhorias a serem feitas:
+- Diminuição dos campos Estado Origem/Estado Destino
+- Restrição de dois caracteres para Estado Origem/Estado Destino
+- Inclusão de instrução para inserir somente a sigla em "Estado Origem/Estado Destino"
+- Diminuição do campo "Brinde" do DataGrid para evitar barras de rolagem.
+- Restrição de tamanho de campos para evitar erros ao salvar no banco de dados.

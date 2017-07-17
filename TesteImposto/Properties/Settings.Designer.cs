@@ -26,10 +26,11 @@ namespace TesteImposto.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLExpress;Integrated Security=True")]
-        public string ConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-FUQS7LM\\SQLExpress;Initial Catalog=Teste;Integrated Security=" +
+            "True")]
+        public string TesteConnectionString {
             get {
-                return ((string)(this["ConnectionString"]));
+                return ((string)(this["TesteConnectionString"]));
             }
         }
     }

@@ -57,6 +57,11 @@ namespace TesteImposto
 
             foreach (DataRow row in table.Rows)
             {
+                //Caso o usuário não tenha checado a checkbox "Brinde", atribuir o valor "false" manualmente
+                //Necessário pois caso o usuário não clique na checkbox, o valor correspondente da DataColumn vira "null" e gera um erro ao adiciona-lo em ItensDoPedido
+                if (row.IsNull("Brinde"))
+                    row["Brinde"] = false;
+
                 pedido.ItensDoPedido.Add(
                     new PedidoItem()
                     {

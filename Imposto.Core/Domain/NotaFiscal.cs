@@ -153,6 +153,7 @@ namespace Imposto.Core.Domain
                 }
                 notaFiscalItem.NomeProduto = itemPedido.NomeProduto;
                 notaFiscalItem.CodigoProduto = itemPedido.CodigoProduto;
+                ItensDaNotaFiscal.Add(notaFiscalItem);
             }            
         }
     }
