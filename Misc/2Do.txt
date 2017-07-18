@@ -42,13 +42,12 @@ Teste 6 - Melhorias a serem feitas:
 	- Criação de variável do tipo List<Estado> para popular cbbOrigem e cbbDestino
 	- Criação do método geraEstados no código da janela FormImposto.
 	- Criação de método populaCombosEstados no código da janela FormImposto
-- Diminuição dos campos Estado Origem/Estado Destino
-- Restrição de dois caracteres para Estado Origem/Estado Destino
-- Inclusão de instrução para inserir somente a sigla em "Estado Origem/Estado Destino"
+- Alteração da propriedade MaxLength do campo NomeCliente para 50, alinhando com o limite do banco de dados
+- Criação do método formataDataGridView mesclando a funcionalidade do antigo ResizeColumns com funcionalidades para limitar os erros ao preencher a gridView.
 - Diminuição do campo "Brinde" do DataGrid para evitar barras de rolagem.
-- Restrição de tamanho de campos para evitar erros ao salvar no banco de dados.
 - Formatar numeros no datagrid.
 - Limpar campos ao inserir.
+- Validação de formulario.
 
 Teste 7 - Desconto de item na nota fiscal
 - Nova propriedade criada na classe NotaFiscalItem chamada "Desconto"
@@ -64,3 +63,4 @@ Teste 8 - Refatoração
 - Criação de nova classe "Calculos" para agregar todos os calculos do sistema.
 - Alteração do foreach dentro do método EmitirNotaFiscal dentro da classe NotaFiscal para utilizar os cálculos da nova classe "Calculos".
 - Refatoração da lógica de cálculo do Cfop de ifs encadeados para Switch na classe "Calculos"
+- Refatoração da função ResizeColumns da classe FormImposto para facilitar seu entendimento 

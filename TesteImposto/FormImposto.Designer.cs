@@ -70,9 +70,10 @@
             // textBoxNomeCliente
             // 
             this.textBoxNomeCliente.Location = new System.Drawing.Point(95, 9);
+            this.textBoxNomeCliente.MaxLength = 50;
             this.textBoxNomeCliente.Name = "textBoxNomeCliente";
             this.textBoxNomeCliente.Size = new System.Drawing.Size(939, 20);
-            this.textBoxNomeCliente.TabIndex = 3;
+            this.textBoxNomeCliente.TabIndex = 1;
             // 
             // label4
             // 
@@ -90,7 +91,7 @@
             this.dataGridViewPedidos.Location = new System.Drawing.Point(6, 109);
             this.dataGridViewPedidos.Name = "dataGridViewPedidos";
             this.dataGridViewPedidos.Size = new System.Drawing.Size(1028, 325);
-            this.dataGridViewPedidos.TabIndex = 7;
+            this.dataGridViewPedidos.TabIndex = 4;
             // 
             // buttonGerarNotaFiscal
             // 
@@ -105,20 +106,22 @@
             // cbbOrigem
             // 
             this.cbbOrigem.DisplayMember = "Nome";
+            this.cbbOrigem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbOrigem.FormattingEnabled = true;
             this.cbbOrigem.Location = new System.Drawing.Point(95, 34);
             this.cbbOrigem.Name = "cbbOrigem";
             this.cbbOrigem.Size = new System.Drawing.Size(121, 21);
-            this.cbbOrigem.TabIndex = 9;
+            this.cbbOrigem.TabIndex = 2;
             // 
             // cbbDestino
             // 
             this.cbbDestino.DisplayMember = "Nome";
+            this.cbbDestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbDestino.FormattingEnabled = true;
             this.cbbDestino.Location = new System.Drawing.Point(95, 61);
             this.cbbDestino.Name = "cbbDestino";
             this.cbbDestino.Size = new System.Drawing.Size(121, 21);
-            this.cbbDestino.TabIndex = 10;
+            this.cbbDestino.TabIndex = 3;
             // 
             // FormImposto
             // 

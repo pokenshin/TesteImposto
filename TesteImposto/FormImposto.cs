@@ -22,9 +22,35 @@ namespace TesteImposto
             InitializeComponent();
             dataGridViewPedidos.AutoGenerateColumns = true;                       
             dataGridViewPedidos.DataSource = GetTablePedidos();
-            ResizeColumns();
+            formataDataGridView(dataGridViewPedidos); //Limita tamanhos e formata o dataGridView
+            
             geraEstados(); //Gera lista de estados
             populaCombosEstados(); //Popula comboboxes com os estados gerados
+        }
+
+        private void formataDataGridView(DataGridView dgv)
+        {
+            DataGridViewTextBoxColumn nomeProduto = ((DataGridViewTextBoxColumn)dgv.Columns["Nome do produto"]);
+            DataGridViewTextBoxColumn codProduto = ((DataGridViewTextBoxColumn)dgv.Columns["Codigo do produto"]);
+            DataGridViewTextBoxColumn valorProduto = ((DataGridViewTextBoxColumn)dgv.Columns["Valor"]);
+            DataGridViewCheckBoxColumn brindeProduto = ((DataGridViewCheckBoxColumn)dgv.Columns["Brinde"]);
+
+            //Formata Nome do Produto
+            nomeProduto.MaxInputLength = 50;
+            nomeProduto.Width = Convert.ToInt16(dataGridViewPedidos.Width * 0.4); // Seta a largura da coluna para 40% da largura do dataGrid
+
+            //Formata Codigo do Produto
+            codProduto.MaxInputLength = 20;
+            codProduto.Width = Convert.ToInt16(dataGridViewPedidos.Width * 0.3); // Seta a largura da coluna para 30% da largura do dataGrid
+
+            //Formata Valor
+            valorProduto.MaxInputLength = 3;
+            valorProduto.Width = Convert.ToInt16(dataGridViewPedidos.Width * 0.15); // Seta a largura da coluna para 15% da largura do dataGrid
+            
+
+            //Formata Brinde
+            brindeProduto.Width = Convert.ToInt16(dataGridViewPedidos.Width * 0.109); // Seta a largura da coluna para 10,9% da largura do dataGrid
+
         }
 
         private void populaCombosEstados()
@@ -39,13 +65,7 @@ namespace TesteImposto
 
         private void ResizeColumns()
         {
-            double mediaWidth = dataGridViewPedidos.Width / dataGridViewPedidos.Columns.GetColumnCount(DataGridViewElementStates.Visible);
 
-            for (int i = dataGridViewPedidos.Columns.Count - 1; i >= 0; i--)
-            {
-                var coluna = dataGridViewPedidos.Columns[i];
-                coluna.Width = Convert.ToInt32(mediaWidth);
-            }   
         }
 
         private object GetTablePedidos()
@@ -120,6 +140,15 @@ namespace TesteImposto
 
             service.GerarNotaFiscal(pedido);
             MessageBox.Show("Operação efetuada com sucesso");
+            LimpaCampos();
+        }
+
+        private void LimpaCampos()
+        {
+            textBoxNomeCliente.Text = "";
+            cbbDestino.SelectedIndex = 0;
+            cbbOrigem.SelectedIndex = 0;
+            dataGridViewPedidos.DataSource = GetTablePedidos();
         }
     }
 }
