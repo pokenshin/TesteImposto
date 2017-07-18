@@ -27,8 +27,8 @@ namespace Imposto.Core.Data
                     cmd.Parameters.Add("@pNumeroNotaFiscal", SqlDbType.Int).Value = notaFiscal.NumeroNotaFiscal;
                     cmd.Parameters.Add("@pSerie", SqlDbType.Int).Value = notaFiscal.Serie;
                     cmd.Parameters.Add("@pNomeCliente", SqlDbType.VarChar).Value = notaFiscal.NomeCliente;
-                    cmd.Parameters.Add("@pEstadoDestino", SqlDbType.VarChar).Value = notaFiscal.EstadoDestino;
-                    cmd.Parameters.Add("@pEstadoOrigem", SqlDbType.VarChar).Value = notaFiscal.EstadoOrigem;
+                    cmd.Parameters.Add("@pEstadoDestino", SqlDbType.VarChar).Value = notaFiscal.EstadoDestino.Sigla;
+                    cmd.Parameters.Add("@pEstadoOrigem", SqlDbType.VarChar).Value = notaFiscal.EstadoOrigem.Sigla;
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -54,6 +54,7 @@ namespace Imposto.Core.Data
                         cmd.Parameters.Add("@pBaseIpi", SqlDbType.Decimal).Value = item.BaseIpi;
                         cmd.Parameters.Add("@pAliquotaIpi", SqlDbType.Decimal).Value = item.AliquotaIpi;
                         cmd.Parameters.Add("@pValorIpi", SqlDbType.Decimal).Value = item.ValorIpi;
+                        cmd.Parameters.Add("@pDesconto", SqlDbType.Decimal).Value = item.Desconto;
                         
                         cmd.ExecuteNonQuery();
                     }

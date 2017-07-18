@@ -2,6 +2,8 @@
 
 - BUG Não documentado 2: os itens do pedido não estão sendo adicionados na nota fiscal. Corrigido ao chamar o método "ItensDaNotaFiscal.Add(notaFiscalItem)" durante o loop "foreach (PedidoItem itemPedido in pedido.ItensDoPedido)" dentro do método EmitirNotaFiscal da classe NotaFiscal. (Linha 156).
 
+- BUG não documentado 3: originalmente no código, na função EmitirNotaFiscal da classe NotaFiscal, há dois "ifs" que apontam EstadoOrigem == "SP" e EstadoDestino == "SE" e atribuem valores de CFOP diferentes, um com "6.007" e outro com "6.009". O valor que retorna "6.007" foi removido.
+
 Teste 1 - Gerar XML
 - Adicionado [Serializable] na classe NotaFiscal.
 - Adicionado [Serializable] na classe NotaFiscalItem.
@@ -41,3 +43,18 @@ Teste 6 - Melhorias a serem feitas:
 - Restrição de tamanho de campos para evitar erros ao salvar no banco de dados.
 - Formatar numeros no datagrid.
 - Limpar campos ao inserir.
+
+Teste 7 - Desconto de item na nota fiscal
+- Nova propriedade criada na classe NotaFiscalItem chamada "Desconto"
+- Alteração da tabela NotaFiscalItem (concatenado ao script CRIAR_NOVOS_CAMPOS_NOTAFISCALITEM)
+	- Novo campo: Desconto decimal (18,5)
+- Alteração da Stored Procedure P_NOTA_FISCAL_ITEM para adicionar o novo campo criado na tabela. Script ALTER_P_NOTA_FISCAL_ITEM atualizado com o novo campo.
+- Alteração do método SalvarNotaFiscal da classe NotaFiscalRepository para refletir as alterações da Stored Procedure P_NOTA_FISCAL_ITEM
+
+Teste 8 - Refatoração
+- Criação de nova classe "Estado" com todas as siglas válidas para os estados, seus respectivos nomes e regiões.
+- Alteração de Propriedades EstadoDestino e EstadoOrigem da classe NotaFiscal para serem do tipo "Estado" ao invés de "string".
+- Alteração de Propriedades EstadoDestino e EstadoOrigem da classe Pedido para serem do tipo "Estado" ao invés de "string"
+- Criação de nova classe "Calculos" para agregar todos os calculos do sistema.
+- Alteração do foreach dentro do método EmitirNotaFiscal dentro da classe NotaFiscal para utilizar os cálculos da nova classe "Calculos".
+- Refatoração da lógica de cálculo do Cfop de ifs encadeados para Switch na classe "Calculos"

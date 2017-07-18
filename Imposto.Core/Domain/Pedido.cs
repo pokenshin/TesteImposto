@@ -8,8 +8,8 @@ namespace Imposto.Core.Domain
 {
     public class Pedido
     {
-        public string EstadoDestino { get; set; }
-        public string EstadoOrigem { get; set; }
+        public Estado EstadoDestino { get; set; }
+        public Estado EstadoOrigem { get; set; }
 
         public string NomeCliente { get; set; }
 
