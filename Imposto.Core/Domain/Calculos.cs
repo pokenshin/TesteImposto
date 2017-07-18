@@ -94,7 +94,7 @@ namespace Imposto.Core.Domain
                 return 0.0;
         }
 
-        public double CalculoaBaseIcms(string Cfop, double valor)
+        public double CalculaBaseIcms(string Cfop, double valor)
         {
             if (Cfop == "6.009")
                 return valor * 0.90; //redução da base

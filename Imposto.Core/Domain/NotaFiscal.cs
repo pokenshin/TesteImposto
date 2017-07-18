@@ -44,7 +44,7 @@ namespace Imposto.Core.Domain
                 notaFiscalItem.Cfop = calculos.CalculaCfop(pedido.EstadoOrigem, pedido.EstadoDestino);
                 notaFiscalItem.TipoIcms = calculos.CalculaTipoIcms(pedido.EstadoOrigem, pedido.EstadoDestino, itemPedido.Brinde);
                 notaFiscalItem.AliquotaIcms = calculos.CalculaAliquotaIcms(pedido.EstadoOrigem, pedido.EstadoDestino, itemPedido.Brinde);
-                notaFiscalItem.BaseIcms = calculos.CalculoaBaseIcms(notaFiscalItem.Cfop, itemPedido.ValorItemPedido);
+                notaFiscalItem.BaseIcms = calculos.CalculaBaseIcms(notaFiscalItem.Cfop, itemPedido.ValorItemPedido);
                 notaFiscalItem.ValorIcms = calculos.CalculaValorIcms(notaFiscalItem.BaseIcms, notaFiscalItem.AliquotaIcms);
                 notaFiscalItem.AliquotaIpi = calculos.CalculaAliquotaIpi(itemPedido.Brinde);
                 notaFiscalItem.ValorIpi = calculos.CalculaValorIpi(notaFiscalItem.BaseIpi, notaFiscalItem.AliquotaIpi);

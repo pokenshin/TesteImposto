@@ -64,3 +64,13 @@ Teste 8 - Refatoração
 - Alteração do foreach dentro do método EmitirNotaFiscal dentro da classe NotaFiscal para utilizar os cálculos da nova classe "Calculos".
 - Refatoração da lógica de cálculo do Cfop de ifs encadeados para Switch na classe "Calculos"
 - Refatoração da função ResizeColumns da classe FormImposto para facilitar seu entendimento 
+
+Teste 9 - Testes Unitários
+- Criação de novo projeto "Imposto.Test" para abrigar os testes unitários
+- Criação de classe de testes unitários chamada CalculosTeste para a classe Calculos:
+	- Criação de testes para o método CalculaTipoIcms
+	- Criação de testes para o método CalculaAliquotaIcms
+	- Criação de testes para o método CalculaValorIcms
+	- Criação de testes para o método CalculaValorIpi
+	- Criação de testes para o método CalculaAliquotaIpi
+	- Criação de testes para o método CalculaDesconto
