@@ -36,6 +36,12 @@ Teste 5 - Bug no CFOP
 - Corrigido bug que impedia a geração do CFOP para os itens inseridos no pedido. O bug era causado pela inversão dos campos EstadoOrigem e EstadoDestino no método EmitirNotaFiscal da classe NotaFiscal.
 
 Teste 6 - Melhorias a serem feitas:
+- Alteração dos campos Estado Origem e Estado Destino para Combobox:
+	- Remoção da lista de estados da classe "Estado".
+	- Criação de campos cbbOrigem e cbbDestino do tipo Combobox em FormImposto
+	- Criação de variável do tipo List<Estado> para popular cbbOrigem e cbbDestino
+	- Criação do método geraEstados no código da janela FormImposto.
+	- Criação de método populaCombosEstados no código da janela FormImposto
 - Diminuição dos campos Estado Origem/Estado Destino
 - Restrição de dois caracteres para Estado Origem/Estado Destino
 - Inclusão de instrução para inserir somente a sigla em "Estado Origem/Estado Destino"
