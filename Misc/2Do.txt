@@ -27,14 +27,17 @@ Teste 3 - Campos para calculo do IPI
 - Alteração da Stored Procedure P_NOTA_FISCAL_ITEM para adicionar os novos campos criados na tabela. Script para reproduzir alterações está no arquivo ALTER_P_NOTA_FISCAL_ITEM.
 - Alteração no método SalvarNotaFiscal da classe NotaFiscalRepository para refletir as alterações da Stored Procedure P_NOTA_FISCAL_ITEM
 
+Teste 4 - Criação de Stored Procedure ICMS/Ipi
+- Criada nova Stored Procedure chamada P_RELATORIO_ICMS_IPI. Script para criação da Stored Procedure está disponível no arquivo P_RELATORIO_ICMS_IPI.
 
 Teste 5 - Bug no CFOP
 - Corrigido bug que impedia a geração do CFOP para os itens inseridos no pedido. O bug era causado pela inversão dos campos EstadoOrigem e EstadoDestino no método EmitirNotaFiscal da classe NotaFiscal.
 
-Melhorias a serem feitas:
+Teste 6 - Melhorias a serem feitas:
 - Diminuição dos campos Estado Origem/Estado Destino
 - Restrição de dois caracteres para Estado Origem/Estado Destino
 - Inclusão de instrução para inserir somente a sigla em "Estado Origem/Estado Destino"
 - Diminuição do campo "Brinde" do DataGrid para evitar barras de rolagem.
 - Restrição de tamanho de campos para evitar erros ao salvar no banco de dados.
-- Formatar numeros no datagrid
+- Formatar numeros no datagrid.
+- Limpar campos ao inserir.
